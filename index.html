@@ -1,103 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cámara Argentina - Constancia</title>
 
-159
-160
-161
-162
-163
-164
-165
-166
-167
-168
-169
-170
-171
-172
-173
-174
-175
-176
-177
-178
-179
-180
-181
-182
-183
-184
-185
-186
-187
-188
-189
-190
-191
-192
-193
-194
-195
-196
-197
-198
-199
-200
-201
-202
-203
-204
-205
-206
-207
-208
-209
-210
-211
-212
-213
-214
-215
-216
-217
-218
-219
-220
-221
-222
-223
-224
-225
-226
-227
-228
-229
-230
-231
-232
-233
-234
-235
-236
-237
-238
-239
-240
-241
-242
-243
-244
-245
+  <style>
+    body{
+      margin:0;
+      font-family: Arial, sans-serif;
+      color:#111827;
+      background:#e9eef5;
+      overflow-x:hidden;
+      position:relative;
+    }
 
+    /* BACKGROUND */
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      z-index:-2;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(59,130,246,0.10), transparent 40%),
+        radial-gradient(circle at 80% 30%, rgba(16,185,129,0.08), transparent 45%),
+        radial-gradient(circle at 50% 80%, rgba(99,102,241,0.08), transparent 50%),
+        repeating-linear-gradient(45deg, rgba(255,255,255,0.35) 0px, rgba(255,255,255,0.35) 2px, transparent 2px, transparent 10px);
+    }
+
+    body::after{
+      content:"CÁMARA ARGENTINA • CERTIFICADO • VERIFICACIÓN •";
+      position:fixed;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:42px;
+      font-weight:700;
+      color:rgba(17,24,39,0.05);
+      transform:rotate(-25deg);
+      letter-spacing:6px;
+      z-index:-1;
+      pointer-events:none;
+      text-align:center;
+    }
+
+    .container{
+      max-width:520px;
+      margin:0 auto;
+      padding:16px;
+    }
+
+    .card{
+      background:rgba(255,255,255,0.92);
+      backdrop-filter: blur(6px);
+      border-radius:14px;
+      padding:18px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.08);
+      border:1px solid rgba(0,0,0,0.05);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .top-loader{
+      position:absolute;
+      top:0;
+      left:0;
+      height:3px;
+      width:100%;
+      background:linear-gradient(90deg,transparent,#3b82f6,transparent);
+      animation:load 2s infinite;
+    }
+
+    @keyframes load{
+      0%{transform:translateX(-100%)}
+      100%{transform:translateX(100%)}
+    }
+
+    /* LOGOS */
+    .logos{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:10px;
+      margin-bottom:10px;
+    }
+
+    .logo{
+      width:140px;
+      max-height:70px;
+      object-fit:contain;
+      background:rgba(255,255,255,0.6);
+      border-radius:8px;
+      padding:6px;
+    }
+
+    /* TITLE */
+    .center-title{
+      text-align:center;
+      margin-top:10px;
+    }
+
+    .main-title{
+      font-size:18px;
+      font-weight:800;
+    }
+
+    .sub-title{
+      font-size:13px;
+      color:#6b7280;
+      margin-top:4px;
+    }
+
+    .status{
+      display:inline-block;
+      margin-top:8px;
+      padding:4px 10px;
+      border-radius:999px;
+      background:#e0f2fe;
+      color:#0369a1;
+      font-size:12px;
+      font-weight:700;
+    }
+
+    /* FIELDS */
+    .field{
+      margin-top:14px;
+    }
+
+    .label{
+      font-size:13px;
+      color:#6b7280;
+    }
+
+    .value{
+      font-size:15px;
+      font-weight:600;
+      margin-top:2px;
+    }
+
+    /* QR */
+    .qr-box{
+      margin-top:16px;
+      height:180px;
+      border:2px dashed #9ca3af;
+      border-radius:12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#9ca3af;
+      font-size:13px;
+      background:rgba(255,255,255,0.6);
+    }
+
+    /* NOTE */
+    .note{
+      margin-top:12px;
+      font-size:12px;
+      color:#6b7280;
+      text-align:center;
+    }
+
+    /* BUTTON */
+    .btn{
+      display:block;
+      text-align:center;
+      margin-top:14px;
+      padding:12px;
+      background:#111827;
+      color:#fff;
+      border-radius:10px;
+      text-decoration:none;
+      font-weight:600;
+    }
+
+    .btn:active{
+      transform:scale(0.97);
+    }
+
+    /* OVERLAY */
+    .overlay{
       position:fixed;
       inset:0;
       background:rgba(15,23,42,0.75);
       display:flex;
       align-items:center;
       justify-content:center;
-      color:white;
-      font-size:16px;
-      z-index:10;
       flex-direction:column;
       gap:10px;
+      color:white;
+      z-index:10;
     }
 
     .spinner{
@@ -109,15 +201,18 @@
       animation:spin 1s linear infinite;
     }
 
-    @keyframes spin{to{transform:rotate(360deg)}}
+    @keyframes spin{
+      to{transform:rotate(360deg)}
+    }
 
     @media(max-width:420px){
       .container{padding:12px;}
-      .main-title{font-size:16px;}
+      .logo{width:120px;}
       body::after{font-size:28px;}
     }
   </style>
 </head>
+
 <body>
 
 <div class="overlay" id="overlay">
@@ -126,21 +221,24 @@
 </div>
 
 <div class="container">
-
   <div class="card">
+
     <div class="top-loader"></div>
 
+    <!-- LOGOS -->
     <div class="logos">
-      <img class="logo" src="logo1.png" alt="logo 1" />
-      <img class="logo" src="logo2.png" alt="logo 2" />
+      <img class="logo" src="logo1.png" />
+      <img class="logo" src="logo2.png" />
     </div>
 
+    <!-- TITLE -->
     <div class="center-title">
       <div class="main-title">Cámara Argentina de Capacitación</div>
       <div class="sub-title">Constancia de Validez de Certificado de Alumno</div>
       <div class="status" id="status">EN PROCESO</div>
     </div>
 
+    <!-- DATA -->
     <div class="field"><div class="label">Nombre del Alumno:</div><div class="value">Rosa, Maria Dolores</div></div>
     <div class="field"><div class="label">Teléfono Alumno:</div><div class="value">2320616062</div></div>
     <div class="field"><div class="label">Calificación Obtenida:</div><div class="value">9</div></div>
@@ -149,6 +247,7 @@
     <div class="field"><div class="label">Fecha de Solicitud:</div><div class="value">29.01.2024</div></div>
     <div class="field"><div class="label">Fecha de Finalización Curso:</div><div class="value">30.11.2023</div></div>
 
+    <!-- QR -->
     <div class="qr-box">AQUÍ VA EL CÓDIGO QR</div>
 
     <div class="note">
@@ -160,7 +259,6 @@
     </a>
 
   </div>
-
 </div>
 
 <script>
