@@ -24,6 +24,18 @@
       border-radius:14px;
       padding:18px;
       box-shadow:0 10px 30px rgba(0,0,0,0.08);
+      animation: fadeIn 0.6s ease-out;
+    }
+
+    @keyframes fadeIn{
+      from{
+        opacity:0;
+        transform: translateY(10px);
+      }
+      to{
+        opacity:1;
+        transform: translateY(0);
+      }
     }
 
     .logos{
@@ -62,8 +74,8 @@
       margin:10px auto;
       padding:4px 10px;
       border-radius:999px;
-      background:#e0f2fe;
-      color:#0369a1;
+      background:#dcfce7;
+      color:#166534;
       font-size:12px;
       font-weight:700;
     }
@@ -97,6 +109,16 @@
       padding:6px;
       border-radius:10px;
       border:1px solid #e5e7eb;
+      animation: qrPulse 3s ease-in-out infinite;
+    }
+
+    @keyframes qrPulse{
+      0%,100%{
+        transform: scale(1);
+      }
+      50%{
+        transform: scale(1.03);
+      }
     }
 
     .note{
@@ -116,6 +138,11 @@
       border-radius:10px;
       text-decoration:none;
       font-weight:600;
+      transition:0.2s;
+    }
+
+    .btn:active{
+      transform:scale(0.97);
     }
 
     @media(max-width:420px){
@@ -143,14 +170,41 @@
       <div class="status">VALIDADO</div>
     </div>
 
-    <!-- DATA -->
-    <div class="field"><div class="label">Nombre del Alumno:</div><div class="value">Rosa, Maria Dolores</div></div>
-    <div class="field"><div class="label">Teléfono Alumno:</div><div class="value">2320616062</div></div>
-    <div class="field"><div class="label">Calificación Obtenida:</div><div class="value">9</div></div>
-    <div class="field"><div class="label">D.N.I. Alumno:</div><div class="value">29.667.333</div></div>
-    <div class="field"><div class="label">Curso que aprobó:</div><div class="value">Asistente en Terapia Ocupacional</div></div>
-    <div class="field"><div class="label">Fecha de Solicitud:</div><div class="value">29.01.2024</div></div>
-    <div class="field"><div class="label">Fecha de Finalización:</div><div class="value">30.11.2023</div></div>
+    <!-- INFO -->
+    <div class="field">
+      <div class="label">Nombre del Alumno:</div>
+      <div class="value">Rosa, Maria Dolores</div>
+    </div>
+
+    <div class="field">
+      <div class="label">Teléfono Alumno:</div>
+      <div class="value">2320616062</div>
+    </div>
+
+    <div class="field">
+      <div class="label">Calificación Obtenida:</div>
+      <div class="value">9</div>
+    </div>
+
+    <div class="field">
+      <div class="label">D.N.I. Alumno:</div>
+      <div class="value">29.667.333</div>
+    </div>
+
+    <div class="field">
+      <div class="label">Curso que aprobó:</div>
+      <div class="value">Asistente en Terapia Ocupacional</div>
+    </div>
+
+    <div class="field">
+      <div class="label">Fecha de Solicitud:</div>
+      <div class="value">29.01.2024</div>
+    </div>
+
+    <div class="field">
+      <div class="label">Fecha de Finalización:</div>
+      <div class="value">30.11.2023</div>
+    </div>
 
     <!-- QR -->
     <div class="qr">
